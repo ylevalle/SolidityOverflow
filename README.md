@@ -1,2 +1,6 @@
 # SolidityOverflow
 A repository containing examples of bad programming practices and smarts contracts vulnerabilities. In this case, integer overflow and underflow
+
+An over/under flow occurs when an operation is performed that requires a fixed size variable to store a number (or piece of data) that is outside the range of the variable's data type.
+
+For example, subtracting 1 from a uint8 (unsigned integer of 8 bits, i.e. only positive) variable that stores 0 as it's value, will result in the number 255. This is an underflow. We have assigned a number below the range of the uint8, the result wraps around and gives the largest number a uint8 can store. Similarly, adding 2^8=256 to a uint8 will leave the variable unchanged as we have wrapped around the entire length of the uint. Adding numbers larger than the data type's range is called an overflow. For clarity, adding 257 to a uint8 that currently has a zero value will result in the number 1. It's sometimes instructive to think of fixed type variables being cyclic, where we start again from zero if we add numbers above the largest possible stored number, and vice-versa for zero, where we start counting down from the largest number the more we subtract from 0.
